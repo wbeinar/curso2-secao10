@@ -4,61 +4,68 @@ import java.util.Objects;
 
 public class Employee {
 	
-	private double id;
+	private Integer id;
 	private String name;
-	private double salary;
+	private Double salary;
 	
 	public Employee() {
 		
 	}
 	
-	public Employee(double id, String nome, double salario) {
+	public Employee(Integer id, String name, Double salary) {
 		this.id = id;
-		this.name = nome;
-		this.salary = salario;
+		this.name = name;
+		this.salary = salary;
 	}
 
 
-	public double getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(double id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
 
-	public String getNome() {
+	public String getName() {
 		return name;
 	}
 
 
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 
-	public double getSalario() {
+	public Double getSalary() {
 		return salary;
 	}
 
-
-	public void setSalario(double salario) {
-		this.salary = salario;
+	public void setSalary(Double salary) {
+		this.salary = salary;
 	}
 
+	
+	public void increaseSalary(double percent) {
+		salary += salary * percent/100;
+		
+	}
+
+
+	@Override
+	public String toString() {
+		return "\nList of Employees \n"
+				+ "id=" + id 
+				+ "\nnome=" + name 
+				+ "\nsalario=" + salary;
+	}
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
-	
-	public double improveSalary(int	percent) {
-		return salary *= (percent/100 + 1);
-		
-	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -69,16 +76,7 @@ public class Employee {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		return Double.doubleToLongBits(id) == Double.doubleToLongBits(other.id);
-	}
-
-
-	@Override
-	public String toString() {
-		return "Employee \n"
-				+ "id=" + id 
-				+ "\nnome=" + name 
-				+ "\nsalario=" + salary;
+		return Objects.equals(id, other.id);
 	}
 	
 	
