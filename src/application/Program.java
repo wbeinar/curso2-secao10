@@ -47,7 +47,7 @@ public class Program {
 		double percent = sc.nextDouble();
 
 		for (Employee empp : list) {
-			if (hasId(list, increaseId)) {
+			if (empp.getId() == increaseId) {
 				empp.increaseSalary(percent);
 			}
 		}
